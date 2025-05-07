@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Profissional - Clínica Luaris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img src="img/logo-luaris.png" alt="Logo da Clínica Luaris" class="logo" />
+    <h1>Login do Profissional</h1>
+    <a href="index.html" class="voltar">← Voltar</a>
+  </header>
+
+  <main>
+    <form id="form-login">
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" required placeholder="Digite sua senha">
+
+      <button type="submit">Entrar</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Luaris</p>
+  </footer>
+
+  <script>
+    document.getElementById('form-login').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      try {
+        const res = await fetch('/login-profissional', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, senha })
+        });
+
+        if (!res.ok) {
+          const errData = await res.json();
+          alert(errData.error || 'Erro ao fazer login.');
+          return;
+        }
+
+        const result = await res.json();
+        localStorage.setItem('id_profissional', result.id_profissional);
+        localStorage.setItem('nome_profissional', result.nome);
+        window.location.href = 'painel-profissional.html';
+      } catch (err) {
+        console.error('Erro na requisição:', err);
+        alert('Erro ao se comunicar com o servidor.');
+      }
+    });
+  </script>
+</body>
+</html>

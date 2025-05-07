@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin - Clínica Luaris</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="img/logo-luaris.png" alt="Logo da Clínica Luaris" class="logo" />
+    <h1>Painel Administrativo</h1>
+    <a href="index.html" class="voltar">← Voltar ao Site</a>
+  </header>
+
+  <main>
+    <!-- Gerenciar Serviços -->
+    <section>
+      <h2>Gerenciar Serviços</h2>
+      <form id="form-servico">
+        <label for="titulo-servico">Título</label>
+        <input type="text" id="titulo-servico" placeholder="Ex: Psicologia Infantil" required />
+
+        <label for="descricao-servico">Descrição</label>
+        <textarea id="descricao-servico" rows="3" placeholder="Descrição do serviço..." required></textarea>
+
+
+
+
+
+
+        <button type="submit">Adicionar Serviço</button>
+      </form>
+      <ul id="lista-servicos" class="lista-admin"></ul>
+    </section>
+
+    <!-- Gerenciar Profissionais -->
+    <section>
+      <h2>Gerenciar Profissionais</h2>
+      <form id="form-profissional">
+        <input type="text" id="nome-profissional" placeholder="Nome" required />
+        <input type="text" id="especialidade-profissional" placeholder="Especialidade" required />
+        <input type="email" id="email-profissional" placeholder="Email" required />
+        <input type="tel" id="telefone-profissional" placeholder="Telefone" required />
+        <input type="url" id="rede-social-profissional" placeholder="Link da rede social (opcional)" />
+
+      
+        <label>Dias de Trabalho:</label>
+        <div class="dias-checkboxes">
+          <label><input type="checkbox" value="Seg"> Seg</label>
+          <label><input type="checkbox" value="Ter"> Ter</label>
+          <label><input type="checkbox" value="Qua"> Qua</label>
+          <label><input type="checkbox" value="Qui"> Qui</label>
+          <label><input type="checkbox" value="Sex"> Sex</label>
+        </div>
+      
+        <label for="horario-inicio">Horário de Início:</label>
+        <input type="time" id="horario-inicio" required>
+      
+        <label for="horario-fim">Horário de Fim:</label>
+        <input type="time" id="horario-fim" required>
+      
+        <button type="submit">Adicionar Profissional</button>
+      </form>
+      
+      
+      <ul id="lista-profissionais" class="lista-admin"></ul>
+    </section>
+
+    <!-- Agendamentos Futuros -->
+    <section>
+      <h2>Agendamentos Futuros</h2>
+      <ul id="lista-agendamentos" class="lista-admin"></ul>
+    </section>
+
+    <!-- Mensagens de Contato -->
+    <section>
+      <h2>Mensagens Recebidas</h2>
+      <ul id="lista-mensagens" class="lista-admin"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Luaris</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="script-admin.js"></script>
+</body>
+</html>

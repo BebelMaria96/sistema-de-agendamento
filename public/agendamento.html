@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendamento - Clínica Luaris</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="img/logo-luaris.png" alt="Logo da Clínica Luaris" class="logo" />
+    <a href="index.html" class="voltar">← Voltar</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Agende uma Consulta</h2>
+      <form id="form-agendamento" autocomplete="off">
+        <label for="responsavel">Nome do Responsável</label>
+        <input type="text" id="responsavel" name="responsavel" required />
+
+        <label for="crianca">Nome da Criança</label>
+        <input type="text" id="crianca" name="crianca" required />
+
+        <label for="idade">Idade da Criança</label>
+        <input type="number" id="idade" name="idade" min="1" max="18" required />
+
+        <label for="profissional">Profissional</label>
+        <select id="profissional" name="profissional" required>
+          <option value="">Selecione</option>
+        </select>
+
+        <label for="dataHora">Data e Horário</label>
+        <input type="datetime-local" id="dataHora" name="dataHora" required />
+
+        <label for="email">E-mail para Contato</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000"  maxlength="15"  required />
+
+        <label for="obs">Observações</label>
+        <textarea id="obs" name="obs" rows="4"></textarea>
+
+        <button type="submit">Confirmar Agendamento</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Luaris</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const selectProf = document.getElementById('profissional');
+
+      try {
+        const res = await fetch('/profissionais');
+        const profissionais = await res.json();
+
+        profissionais.forEach(p => {
+          const option = document.createElement('option');
+          option.value = p.id; 
+          option.textContent = `${p.nome} (${p.especialidade})`;
+          selectProf.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Erro ao carregar profissionais:', error);
+        alert('Erro ao carregar lista de profissionais.');
+      }
+    });
+  </script>
+</body>
+</html>

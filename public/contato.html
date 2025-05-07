@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato - Clínica Luaris</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="img/logo-luaris.png" alt="Logo da Clínica Luaris" class="logo" />
+    <h1>Contato</h1>
+    <a href="index.html" class="voltar">← Voltar</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Fale Conosco</h2>
+
+      <div class="contato-clinica">
+        <h3>Clínica Luaris</h3>
+        <p>Rua dos Bicudos, 123 - Bairro Renascença<br>São Luís - MA</p>
+        <p>Email: contato@luaris.com.br</p>
+        <p>Telefone: (98) 3232-1234</p>
+        <p>Instagram: <a href="https://instagram.com/clinicaLuaris" target="_blank">@clinicaluaris</a></p>
+      </div>
+
+      <div class="contatos-profissionais">
+        <h3>Profissionais</h3>
+        <ul id="lista-profissionais"></ul>
+      </div>
+
+      <form id="form-contato">
+        <h3>Envie uma Mensagem</h3>
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="email">Seu e-mail</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Luaris</p>
+  </footer>
+
+  <script>
+    // Carregar profissionais automaticamente
+    document.addEventListener('DOMContentLoaded', async () => {
+      const lista = document.getElementById('lista-profissionais');
+      const res = await fetch('/profissionais');
+      const profissionais = await res.json();
+  
+      if (profissionais.length === 0) {
+        lista.innerHTML = '<li>Nenhum profissional cadastrado no momento.</li>';
+        return;
+      }
+  
+      profissionais.forEach(p => {
+        const email = `${p.nome.toLowerCase().split(' ').join('.')}@luaris.com.br`;
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${p.nome}</strong> – ${p.especialidade}<br>
+          Email: ${email}<br>
+          Tel: (98) 98888-0000
+          ${p.rede_social ? `<br><a href="${p.rede_social}" target="_blank">🔗 Ver rede social</a>` : ''}
+        `;
+        lista.appendChild(li);
+      });
+    });
+  </script>
+  
+  <script src="script.js"></script>
+</body>
+</html>

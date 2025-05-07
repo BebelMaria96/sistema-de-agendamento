@@ -1,0 +1,404 @@
+/* ========== RESET E BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #afd7df;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ========== CABEÇALHO ========== */
+header {
+  background-color: #fcefec;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid #e2cde2;
+  border-radius: 0 0 20px 20px;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #26635f;
+}
+
+.voltar {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #447ead;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* ========== MENU LATERAL ========== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #deecfd;
+  padding: 60px 20px 20px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.side-menu.active {
+  transform: translateX(0);
+}
+
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu ul li {
+  margin-bottom: 20px;
+}
+
+.side-menu ul li a {
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+  color: #0a4852;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  font-size: 1.2rem;
+}
+
+.side-menu ul li a:hover {
+  background-color: #f7d6eb;
+}
+
+#menu-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1b7980;
+  z-index: 1100;
+}
+
+/* ========== MAIN/SEÇÕES GERAIS ========== */
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px 15px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #2e6782;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ========== FORMULÁRIOS ========== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+form label {
+  font-weight: 600;
+  color: #2e4b82;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 12px;
+  border: 1px solid #d8bfd8;
+  border-radius: 14px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #ba68c8;
+  outline: none;
+  box-shadow: 0 0 6px rgba(186, 104, 200, 0.3);
+}
+
+form button[type="submit"] {
+  background-color: #4496ad;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #732d91;
+}
+
+/* ========== LOGIN ========== */
+form#form-login {
+  max-width: 350px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+form#form-login label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #5a3e6d;
+}
+
+form#form-login input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+form#form-login button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #8e44ad;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+form#form-login button:hover {
+  background-color: #732d91;
+}
+
+/* ========== RODAPÉ ========== */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #f4e4ec;
+  color: #24727a;
+  border-top: 2px solid #faebe2;
+  border-radius: 20px 20px 0 0;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+/* ========== ADMIN: LISTAS E BOTÕES ========== */
+.lista-admin,
+#lista-servicos,
+#lista-profissionais,
+#lista-agendamentos,
+#lista-mensagens {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-admin li,
+#lista-servicos li,
+#lista-profissionais li,
+#lista-agendamentos li,
+#lista-mensagens li {
+  background: #f9f3fc;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  border-left: 5px solid #8e44ad;
+  border-radius: 10px;
+}
+
+#lista-servicos button,
+#lista-profissionais button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+#lista-servicos button:hover,
+#lista-profissionais button:hover {
+  background-color: #ccc;
+}
+
+/* ========== PAINEL PROFISSIONAL ========== */
+ul#lista-agendamentos-prof {
+  list-style: none;
+  padding: 0;
+}
+
+ul#lista-agendamentos-prof li {
+  background-color: #f9f9f9;
+  border-left: 4px solid #373277;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+ul#lista-agendamentos-prof li strong {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* ========== HOME (HERO + SEÇÕES) ========== */
+.hero {
+  text-align: center;
+  background-color: #fef7fa;
+  padding: 2rem 1rem;
+}
+
+.hero-img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: #8e44ad;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sobre,
+.servicos-destaque,
+.cta {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.sobre {
+  background-color: #fff;
+}
+
+.sobre h2,
+.servicos-destaque h2,
+.cta h2 {
+  font-size: 1.6rem;
+  color: #8e44ad;
+  margin-bottom: 1rem;
+}
+
+.sobre p,
+.servicos-destaque p,
+.cta p {
+  font-size: 1rem;
+  color: #333;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  width: 150px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 70px;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: #8e44ad;
+}
+
+.cta {
+  background-color: #ffeef5;
+}
+
+.cta .btn {
+  background-color: #a66fb4;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero h1,
+  .sobre h2,
+  .servicos-destaque h2,
+  .cta h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero p,
+  .sobre p,
+  .cta p {
+    font-size: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .voltar {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}

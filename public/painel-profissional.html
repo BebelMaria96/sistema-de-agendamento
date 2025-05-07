@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel do Profissional | Clínica Luaris</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <img src="img/logo-luaris.png" alt="Logo da Clínica Luaris" class="logo" />
+    <h1>Olá, <span id="nome-profissional">Profissional</span></h1>
+    <a href="#" class="voltar" id="sair">← Sair</a>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section>
+      <h2>Meus Agendamentos</h2>
+      <ul id="lista-agendamentos-prof"></ul>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Clínica Luaris – Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="painel-profissional.js"></script>
+  <script>
+    // Função de logout ao clicar em "Sair"
+    document.getElementById('sair').addEventListener('click', () => {
+      localStorage.removeItem('id_profissional');
+      localStorage.removeItem('nome_profissional');
+      window.location.href = 'login-profissional.html';
+    });
+  </script>
+</body>
+</html>

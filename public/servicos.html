@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serviços - Clínica Luaris</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="img/logo-luaris.png" alt="Logo da Clínica Luaris" class="logo" />
+    <a href="index.html" class="voltar">← Voltar</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Nossos Serviços</h2>
+      <p>Oferecemos atendimentos especializados e humanizados para crianças neurodivergentes.</p>
+
+      <div id="lista-servicos"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Clínica Luaris</p>
+  </footer>
+
+  <script>
+    // Carregar serviços dinamicamente do servidor
+    document.addEventListener('DOMContentLoaded', async () => {
+      const lista = document.getElementById('lista-servicos');
+      const res = await fetch('/servicos');
+      const servicos = await res.json();
+
+      if (servicos.length === 0) {
+        lista.innerHTML = '<p>Nenhum serviço cadastrado no momento.</p>';
+        return;
+      }
+
+      servicos.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'servico-card';
+        card.innerHTML = `
+          <h3>${s.titulo}</h3>
+          <p>${s.descricao}</p>
+        `;
+        lista.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
