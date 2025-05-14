@@ -1,6 +1,6 @@
 É preciso:
 
-1. Instalar node
+1. Instalar node.js e express
 2. xampp para uso de Apache e Mysql
 3. Criar banco de dados e adicionar as tabelas necessarias:
 
